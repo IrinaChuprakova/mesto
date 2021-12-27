@@ -1,0 +1,12 @@
+.profile__info{
+    width: calc(100% - 150px);
+}
+@media screen and (max-width: 320px) {
+    .profile__info  {
+        width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    }
+  }

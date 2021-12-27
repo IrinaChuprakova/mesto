@@ -1,0 +1,11 @@
+.popup{
+    display: none;
+    justify-content: center;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 195px;
+    padding: 0;
+
+}
