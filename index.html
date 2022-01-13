@@ -20,60 +20,60 @@
       <img class="profile__picture" src="image/profile_picture.jpg" alt="Фото профиля">
       <div class="profile__info">
         <h1 class="profile__title"> Жак-Ив Кусто</h1>
-        <button class="button profile__edit"> </button>
+        <button class="button profile__edit" aria-label="edit profile" type="button"> </button>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <button class="button profile__add"></button>
+      <button class="button profile__add" type="button"></button>
     </div>
 
     <div class="cards">
       <ul class="cards__list list">
         
         <li class="cards__item">
-          <img class="cards__img" src="image/Karachaevsk.jpg" alt="">
+          <img class="cards__img" src="image/Karachaevsk.jpg" alt="Фото добавленной карточки">
           <div class="cards__box">
             <h2 class="cards__title">Карачаевск</h2>
-            <button class="button cards__like" > </button>
+            <button class="button cards__like" type="button" > </button>
           </div>
 
         </li>
         <li class="cards__item">
-          <img class="cards__img" src="image/Elbrus.jpg" alt="">
+          <img class="cards__img" src="image/Elbrus.jpg" alt="Фото добавленной карточки">
           <div class="cards__box">
             <h2 class="cards__title">Гора Эльбрус</h2>
-            <button class="button cards__like" > </button>
+            <button class="button cards__like" type="button"> </button>
           </div>
         </li>
         
         <li class="cards__item">
-          <img class="cards__img" src="image/Dombai.jpg" alt="">
+          <img class="cards__img" src="image/Dombai.jpg" alt="Фото добавленной карточки">
           <div class="cards__box">
             <h2 class="cards__title">Домбай</h2>
-            <button class="button cards__like" > </button>
+            <button class="button cards__like" type="button" > </button>
           </div>
         </li>
 
         <li class="cards__item">
-          <img class="cards__img" src="image/Elbrus.jpg" alt="">
+          <img class="cards__img" src="image/Elbrus.jpg" alt="Фото добавленной карточки">
           <div class="cards__box">
             <h2 class="cards__title">Гора Эльбрус</h2>
-            <button class="button cards__like" > </button>
+            <button class="button cards__like" type="button"> </button>
           </div>
         </li>
 
         <li class="cards__item">
-          <img class="cards__img" src="image/Dombai.jpg" alt="">
+          <img class="cards__img" src="image/Dombai.jpg" alt="Фото добавленной карточки">
           <div class="cards__box">
             <h2 class="cards__title">Домбай</h2>
-            <button class="button cards__like" > </button>
+            <button class="button cards__like" type="button"> </button>
           </div>
         </li>
 
         <li class="cards__item">
-          <img class="cards__img" src="image/Karachaevsk.jpg" alt="">
+          <img class="cards__img" src="image/Karachaevsk.jpg" alt="Фото добавленной карточки">
           <div class="cards__box">
             <h2 class="cards__title">Карачаево-Черкесия</h2>
-            <button class="button cards__like" > </button>
+            <button class="button cards__like" type="button"> </button>
           </div>
         </li>
 
@@ -83,21 +83,21 @@
 
   </div>
 
-  <footer class="footer">&copy; 2020 Mesto Russia</footer>
-
-  <section class="popup popup_type_edit">
-    <div class="popup__box">
-      <button class="button popup__close"></button>
-      <form class="popup__form">
+  <footer> <p class="footer"> &copy; 2020 Mesto Russia </p></footer>
+  
+<div class="popup">
+  <div class="popup_type_edit">
+      <button class="button popup__close" type="button"></button>
+      <form class="popup__form" name="profile-edit">
         <fieldset class="popup__fieldset">
           <legend class="popup__header">Редактировать профиль</legend>
-          <input class="popup__input name" type="text">
-          <input class="popup__input job" type="text">
+          <input class="popup__input popup__input_type_name" type="text" name="firstname" value="">
+          <input class="popup__input popup__input_type_job" type="text" name="job" value="">
         </fieldset>
         <button class="button popup__save" type="submit">Сохранить</button>
       </form>
-    </div>
-  </section>
+  </div>
+</div>
 
   <script src="scripts/script.js"> </script>
   

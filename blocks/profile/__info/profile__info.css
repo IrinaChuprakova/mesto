@@ -1,5 +1,7 @@
 .profile__info{
-    width: calc(100% - 150px);
+    max-width: 580px;
+    width: 100%;
+    padding: 0;
 }
 @media screen and (max-width: 320px) {
     .profile__info  {
