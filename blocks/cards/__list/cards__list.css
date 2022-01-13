@@ -5,3 +5,8 @@
   margin: 51px 0 67px 0;
   justify-content: center;
 }
+@media screen and (max-width: 320px) {
+  .cards__list {
+    margin: 36px 0 67px 0;
+  }
+}
