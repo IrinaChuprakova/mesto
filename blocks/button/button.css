@@ -1,9 +1,8 @@
-.button{
-    background-color: transparent;
-    background-position: center;
-    
+.button {
+  background-color: transparent;
+  background-position: center;
 }
-.button:hover{
-    opacity: 0.6;
-    cursor: pointer;
-  }
+.button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

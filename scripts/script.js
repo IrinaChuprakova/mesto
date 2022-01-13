@@ -20,11 +20,10 @@ let formElement = document.querySelector(".popup__form");
 // Находим поля формы в DOM
 let nameInput = document.querySelector(".popup__input_type_name");
 let jobInput = document.querySelector(".popup__input_type_job");
-let nameProfile = document.querySelector(".profile__title"); 
-let descriptionProfile = document.querySelector(".profile__description"); 
-nameInput.value = nameProfile.textContent; 
-jobInput.value = descriptionProfile.textContent; 
-
+let nameProfile = document.querySelector(".profile__title");
+let descriptionProfile = document.querySelector(".profile__description");
+nameInput.value = nameProfile.textContent;
+jobInput.value = descriptionProfile.textContent;
 
 function formSubmitHandler(evt) {
   evt.preventDefault();

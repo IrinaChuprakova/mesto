@@ -5,15 +5,13 @@
   border: 1px solid #fff;
   background-repeat: no-repeat;
   margin-left: 18px;
-
 }
 
 @media screen and (max-width: 320px) {
-  .profile__edit   {
+  .profile__edit {
     width: 18px;
     height: 18px;
     margin-left: 10px;
     align-self: center;
-
   }
 }
