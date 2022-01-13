@@ -1,4 +1,4 @@
-.popup_type_edit {
+.popup__edit {
   display: flex;
   max-width: 430px;
   width: 100%;
@@ -9,7 +9,7 @@
   position: relative;
 }
 @media screen and (max-width: 600px) {
-  .popup_type_edit {
+  .popup__edit {
     max-width: 282px;
   }
 }
