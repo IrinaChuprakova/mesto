@@ -1,13 +1,15 @@
 const popupOpenButton = document.querySelector(".profile__edit");
-const popupCloseButton = document.querySelector(".popup__close");
+const popupCloseButton = document.querySelector(".button_type_close");
 const popup = document.querySelector(".popup");
 
 function togglePopup() {
-  popup.classList.toggle("popup-open");
+  popup.classList.toggle("popup_type_open");
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = descriptionProfile.textContent;
 }
 function closePopupOnOverlayClick(event) {
   if (event.target === event.currentTarget) {
-    popup.classList.remove("popup-open");
+    popup.classList.remove("popup_type_open");
   }
 }
 
@@ -22,8 +24,7 @@ let nameInput = document.querySelector(".popup__input_type_name");
 let jobInput = document.querySelector(".popup__input_type_job");
 let nameProfile = document.querySelector(".profile__title");
 let descriptionProfile = document.querySelector(".profile__description");
-nameInput.value = nameProfile.textContent;
-jobInput.value = descriptionProfile.textContent;
+
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
