@@ -24,12 +24,14 @@
         <p class="profile__description">Исследователь океана</p>
       </div>
       <button class="button profile__add" type="button"></button>
+      
     </div>
 
     <div class="cards">
       <ul class="cards__list list">
         
         <li class="cards__item">
+          <button class="button cards__trash" type="button" > </button>
           <img class="cards__img" src="image/Karachaevsk.jpg" alt="Фото добавленной карточки">
           <div class="cards__box">
             <h2 class="cards__title">Карачаевск</h2>
@@ -68,7 +70,8 @@
             <button class="button cards__like" type="button"> </button>
           </div>
         </li>
-
+        <!-- тут шаблон -->
+<template id="cards__template"> 
         <li class="cards__item">
           <img class="cards__img" src="image/Karachaevsk.jpg" alt="Фото добавленной карточки">
           <div class="cards__box">
@@ -76,7 +79,7 @@
             <button class="button cards__like" type="button"> </button>
           </div>
         </li>
-
+      </template>
       </ul>
     </div>
 
@@ -97,6 +100,19 @@
         <button class="button popup__save" type="submit">Сохранить</button>
       </form>
   </div>
+
+  <div class="popup__add-place">
+    <button class="button button_type_close" type="button"></button> 
+    <form class="popup__form" name="profile-edit">
+      <fieldset class="popup__fieldset">
+        <legend class="popup__header">Редактировать профиль</legend>
+        <input class="popup__input popup__input_type_name" type="text" name="firstname" value="">
+        <input class="popup__input popup__input_type_job" type="text" name="job" value="">
+      </fieldset>
+      <button class="button popup__save" type="submit">Сохранить</button>
+    </form>
+</div>
+
 </div> 
 
   <script src="scripts/script.js"> </script>
