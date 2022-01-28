@@ -10,7 +10,7 @@
 </head>
 
 <body class="page">
-  
+
   <header class="header">
     <div class="header__logo"></div>
   </header>
@@ -24,98 +24,67 @@
         <p class="profile__description">Исследователь океана</p>
       </div>
       <button class="button profile__add" type="button"></button>
-      
     </div>
 
     <div class="cards">
       <ul class="cards__list list">
-        
-        <li class="cards__item">
-          <button class="button cards__trash" type="button" > </button>
-          <img class="cards__img" src="image/Karachaevsk.jpg" alt="Фото добавленной карточки">
-          <div class="cards__box">
-            <h2 class="cards__title">Карачаевск</h2>
-            <button class="button cards__like" type="button" > </button>
-          </div>
-
-        </li>
-        <li class="cards__item">
-          <img class="cards__img" src="image/Elbrus.jpg" alt="Фото добавленной карточки">
-          <div class="cards__box">
-            <h2 class="cards__title">Гора Эльбрус</h2>
-            <button class="button cards__like" type="button"> </button>
-          </div>
-        </li>
-        
-        <li class="cards__item">
-          <img class="cards__img" src="image/Dombai.jpg" alt="Фото добавленной карточки">
-          <div class="cards__box">
-            <h2 class="cards__title">Домбай</h2>
-            <button class="button cards__like" type="button" > </button>
-          </div>
-        </li>
-
-        <li class="cards__item">
-          <img class="cards__img" src="image/Elbrus.jpg" alt="Фото добавленной карточки">
-          <div class="cards__box">
-            <h2 class="cards__title">Гора Эльбрус</h2>
-            <button class="button cards__like" type="button"> </button>
-          </div>
-        </li>
-
-        <li class="cards__item">
-          <img class="cards__img" src="image/Dombai.jpg" alt="Фото добавленной карточки">
-          <div class="cards__box">
-            <h2 class="cards__title">Домбай</h2>
-            <button class="button cards__like" type="button"> </button>
-          </div>
-        </li>
-        <!-- тут шаблон -->
-<template id="cards__template"> 
-        <li class="cards__item">
-          <img class="cards__img" src="image/Karachaevsk.jpg" alt="Фото добавленной карточки">
-          <div class="cards__box">
-            <h2 class="cards__title">Карачаево-Черкесия</h2>
-            <button class="button cards__like" type="button"> </button>
-          </div>
-        </li>
-      </template>
+        <template id="cards__template">
+          <li class="cards__item">
+            <button class="button cards__trash" type="button"> </button>
+            <img class="cards__img" src=" " alt="Фото добавленной карточки">
+            <div class="cards__box">
+              <h2 class="cards__title"></h2>
+              <button class="button cards__like" type="button"> </button>
+            </div>
+          </li>
+        </template>
       </ul>
     </div>
 
+    <footer>
+      <p class="footer"> &copy; 2020 Mesto Russia </p>
+    </footer>
 
-  </div>
+    <div class="popup popup__edit">
+      <div class="popup_container ">
+        <button class="button button_type_close" type="button"></button>
+        <form class="popup__form popup__form-edit" name="profile-edit">
+          <fieldset class="popup__fieldset">
+            <legend class="popup__header">Редактировать профиль</legend>
+            <input class="popup__input popup__input_type_name" type="text" name="firstname" value="">
+            <input class="popup__input popup__input_type_job" type="text" name="job" value="">
+          </fieldset>
+          <button class="button popup__save" type="submit">Сохранить</button>
+        </form>
+      </div>
+      </div>
 
-  <footer> <p class="footer"> &copy; 2020 Mesto Russia </p></footer>
-  
-<div class="popup">
-  <div class="popup__edit">
-      <button class="button button_type_close" type="button"></button> 
-      <form class="popup__form" name="profile-edit">
-        <fieldset class="popup__fieldset">
-          <legend class="popup__header">Редактировать профиль</legend>
-          <input class="popup__input popup__input_type_name" type="text" name="firstname" value="">
-          <input class="popup__input popup__input_type_job" type="text" name="job" value="">
-        </fieldset>
-        <button class="button popup__save" type="submit">Сохранить</button>
-      </form>
-  </div>
+      <div class="popup popup__add-place">
+        <div class="popup_container ">
+        <button class="button button_type_close" type="button"></button>
+        <form class="popup__form popup__form-addPlace" name="place-add">
+          <fieldset class="popup__fieldset">
+            <legend class="popup__header">Новое место</legend>
+            <input class="popup__input popup__input_type_place" type="text" name="firstname" value="Название">
+            <input class="popup__input popup__input_type_link" type="text" name="job" value="Ссылка на картинку">
+          </fieldset>
+          <button class="button popup__save" type="submit">Сохранить</button>
+        </form>
+        </div>
+      </div>
 
-  <div class="popup__add-place">
-    <button class="button button_type_close" type="button"></button> 
-    <form class="popup__form" name="profile-edit">
-      <fieldset class="popup__fieldset">
-        <legend class="popup__header">Редактировать профиль</legend>
-        <input class="popup__input popup__input_type_name" type="text" name="firstname" value="">
-        <input class="popup__input popup__input_type_job" type="text" name="job" value="">
-      </fieldset>
-      <button class="button popup__save" type="submit">Сохранить</button>
-    </form>
-</div>
+      <div class="popup popup__open-img">
+        <div class="popup_container ">
+        <button class="button button_type_close" type="button"></button>
+        <figure class="popup__figure">
+          <img class="popup__img" src="" alt="Фото добавленной карточки">
+          <figcaption class="popup__description"> </figcaption>
+      </figure>
+          
+      </div>
+      </div>
 
-</div> 
+    <script src="scripts/script.js"> </script>
 
-  <script src="scripts/script.js"> </script>
-  
 </body>
 </html>
