@@ -2,9 +2,15 @@ const profileEdit = document.querySelector(".profile__edit");
 const popupEdit = document.querySelector(".popup__edit");
 const popupCloseButtons = document.querySelectorAll(".button_type_close");
 const popup = document.querySelector(".popup");
+const popups = document.querySelectorAll(".popup");
 const cardsTemplate = document.querySelector('#cards__template').content;
 const cardsList = document.querySelector('.cards__list');
-const cardsTrash = document.querySelector('.cards__trash');
+const cardsItem = document.querySelector('.cards__item');
+const cardsLike = document.querySelector('.cards__like');
+const cardsTrash = document.querySelectorAll('.cards__trash');
+const imgOpenPopup =  document.querySelector('.popup__open-img');
+const openedImage = imgOpenPopup.querySelector('.popup__img');
+const descriptionPopup = imgOpenPopup.querySelector('.popup__description');
 
 //массив карточек
 const initialCards = [
@@ -37,14 +43,31 @@ const initialCards = [
 // добавляем карточки из массива
 initialCards.forEach(function (element) {
   const cardElement = cardsTemplate.cloneNode(true);
-  cardElement.querySelector('.cards__title').textContent = element.name;
-  cardElement.querySelector('.cards__img').src = element.link;
-
-  cardElement.querySelector('.cards__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('cards__like_active');
-  });
+  const imgElem = cardElement.querySelector('.cards__img');
+  const cardTitle = cardElement.querySelector('.cards__title');
+  cardTitle.textContent = element.name;
+  imgElem.src = element.link;
+  cardElement.querySelector('.cards__like').addEventListener('click', likeCard);
+  cardElement.querySelector('.cards__trash').addEventListener('click',removeCard)
   cardsList.append(cardElement);
-})
+  imgElem.addEventListener('click', function() {
+    togglePopup(imgOpenPopup);
+    openedImage.src = imgElem.src;
+    descriptionPopup.innerText = cardTitle.textContent;
+  });
+});
+
+//функция лайка 
+function likeCard(evt){
+  evt.target.classList.toggle('cards__like_active');
+
+}
+
+//функция удаления карточки
+
+function removeCard(evt) {
+  evt.target.closest('.cards__item').remove();
+}
 
 //открываем popup
 function togglePopup(popup) {
@@ -56,12 +79,17 @@ function closePopup(evt) {
   evt.target.parentElement.parentElement.classList.remove("popup_opened");
 }
 
-//закрываем popup по клику вне формы
-function closePopupOnOverlayClick(event) {
-  if (event.target === event.currentTarget) {
-    popup.classList.remove("popup_opened");
-  }
-}
+// на все кнопки закрытия во всех попапах навешиваем событие закрытия
+popupCloseButtons.forEach(elem => elem.addEventListener("click", closePopup));
+
+//на все попапы событие закрытия все клика формы
+popups.forEach(popup => {
+  popup.addEventListener("click", function(evt) {
+    if (evt.target === evt.currentTarget) {
+      popup.classList.remove("popup_opened");
+    }
+  })
+});
 
 // открытие popup редактирования профиля
 function popupOpen() {
@@ -70,33 +98,27 @@ function popupOpen() {
   togglePopup(popupEdit);
 }
 
-
-// обработчики собsтия на открытие/закрытие попапа редактирования профиля и попапа добавляения карточки
+// обработчик события на кнопку открытия редактировать профиль
 profileEdit.addEventListener("click", popupOpen);
 
-
-// на все кнопки закрытия во всех попапах навешиваем событие 
-popupCloseButtons.forEach(elem => elem.addEventListener("click", closePopup));
-
-popup.addEventListener("click", closePopupOnOverlayClick);
-
 // Работа попапа редактирования
-// Находим форму в DOM
-let formElement = document.querySelector(".popup__form");
+// Находим форму редактирования профиля в DOM
+let formEditProfile = document.querySelector(".popup__form-edit");
 // Находим поля формы в DOM
 let nameInput = document.querySelector(".popup__input_type_name");
 let jobInput = document.querySelector(".popup__input_type_job");
 let nameProfile = document.querySelector(".profile__title");
 let descriptionProfile = document.querySelector(".profile__description");
 // Функция сохранения значений инпутов в шапку профиля
-function formSubmitHandler(evt) {
+function SubmitEditProfile(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   descriptionProfile.textContent = jobInput.value;
   togglePopup(popupEdit);
 }
 
-formElement.addEventListener("submit", formSubmitHandler);
+//Обработчик на кнопку сохранить формы редактирования
+formEditProfile.addEventListener("submit", SubmitEditProfile);
 
 // открываем попап добавления карточки 
 const popupAddPlace = document.querySelector(".popup__add-place");
@@ -106,20 +128,33 @@ profileAdd.addEventListener('click', function () {
   togglePopup(popupAddPlace)
 })
 
-// карточку добавляем
-// function addCards(cardsTitleValue,cardsImgValue){
+// Находим форму добавления карточки в DOM
+let formAddPlace = document.querySelector(".popup__form-addPlace");
 
-// const cardsElement = cardsTemplate.querySelector('.cards__item').cloneNode(true);
+// Функция добавления карточки
+function submitPlace (evt){
+  evt.preventDefault();
+  const cardElement =  cardsTemplate.querySelector('.cards__item').cloneNode(true);
+  const place = document.querySelector('.popup__input_type_place');
+  const linkPlace = document.querySelector('.popup__input_type_link');
+  const trashButton = cardElement.querySelector('.cards__trash');
+  trashButton.addEventListener('click', removeCard);
+  const likeButton = cardElement.querySelector('.cards__like');
+  likeButton.addEventListener('click',likeCard);
+  const imgElem = cardElement.querySelector('.cards__img');
+  imgElem.src = linkPlace.value;
+  const cardTitle = cardElement.querySelector('.cards__title');
+  cardTitle.textContent = place.value;
+  cardsList.prepend(cardElement);
+  togglePopup(popupAddPlace);
 
-// cardsElement.querySelector('.cards__title').textContent = cardsTitleValue;
-// cardsElement.querySelector('.cards__img').textContent = cardsImgValue;
-// }
+  imgElem.addEventListener('click', function() {
+    togglePopup(imgOpenPopup);
+    openedImage.src = imgElem.src;
+    descriptionPopup.innerText = cardTitle.textContent;
+  });
 
-// удаляем карточку
-// cardsTrash.addEventListener("click",cardsDel);
+}
 
-// function cardsDel(evt){
-//   evt.target.closest('.cards__item').remove();
 
-// }
-
+formAddPlace.addEventListener('submit', submitPlace);
