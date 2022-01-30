@@ -1,9 +1,9 @@
 const profileEdit = document.querySelector('.profile__edit');
-const popupEdit = document.querySelector('.popup__edit');
+const popupEdit = document.querySelector('.popup_type_edit');
 const popupCloseButtons = document.querySelectorAll('.button_type_close');
 const popups = document.querySelectorAll('.popup');
 const cardsList = document.querySelector('.cards__list');
-const imgOpenPopup =  document.querySelector('.popup__open-img');
+const imgOpenPopup =  document.querySelector('.popup_type_open-img');
 const openedImage = imgOpenPopup.querySelector('.popup__img');
 const descriptionPopup = imgOpenPopup.querySelector('.popup__description');
 
@@ -126,7 +126,7 @@ function submitEditProfile(evt) {
 formEditProfile.addEventListener('submit', submitEditProfile);
 
 // открываем попап добавления карточки 
-const popupAddPlace = document.querySelector('.popup__add-place');
+const popupAddPlace = document.querySelector('.popup_type_add-place');
 const profileAdd = document.querySelector('.profile__add');
 
 profileAdd.addEventListener('click', function () {
