@@ -51,40 +51,42 @@
         <form class="popup__form popup__form-edit" name="profile-edit">
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Редактировать профиль</legend>
-            <input class="popup__input popup__input_type_name" type="text" name="firstname" value="">
-            <input class="popup__input popup__input_type_job" type="text" name="job" value="">
+            <input class="popup__input popup__input_type_name" type="text" name="firstname">
+            <input class="popup__input popup__input_type_job" type="text" name="job">
           </fieldset>
           <button class="button popup__save" type="submit">Сохранить</button>
         </form>
       </div>
-      </div>
+    </div>
 
-      <div class="popup popup__add-place">
-        <div class="popup__container ">
+    <div class="popup popup__add-place">
+      <div class="popup__container ">
         <button class="button button_type_close" type="button"></button>
         <form class="popup__form popup__form-addPlace" name="place-add">
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Новое место</legend>
-            <input class="popup__input popup__input_type_place" type="text" name="firstname" value="Название">
-            <input class="popup__input popup__input_type_link" type="text" name="job" value="Ссылка на картинку">
+            <input class="popup__input popup__input_type_place" type="text" name="firstname" placeholder="Название">
+            <input class="popup__input popup__input_type_link" type="text" name="job" placeholder="Ссылка на картинку">
           </fieldset>
           <button class="button popup__save" type="submit">Сохранить</button>
         </form>
-        </div>
       </div>
+    </div>
 
-      <div class="popup popup__open-img">
-        <div class="popup__figure-container ">
+    <div class="popup popup__open-img">
+      <div class="popup__figure-container ">
         <button class="button button_type_close" type="button"></button>
         <figure class="popup__figure">
-          <img class="popup__img" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg" alt="Фото добавленной карточки">
+          <img class="popup__img"
+            src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg"
+            alt="Фото добавленной карточки">
           <figcaption class="popup__description">Описание </figcaption>
-      </figure>
-          
+        </figure>
       </div>
-      </div>
+    </div>
 
     <script src="scripts/script.js"> </script>
 
 </body>
+
 </html>
