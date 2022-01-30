@@ -40,27 +40,9 @@ const initialCards = [
   }
 ];
 
-// добавляем карточки из массива
-initialCards.forEach(function (element) {
-  const cardElement = cardsTemplate.cloneNode(true);
-  const imgElem = cardElement.querySelector('.cards__img');
-  const cardTitle = cardElement.querySelector('.cards__title');
-  cardTitle.textContent = element.name;
-  imgElem.src = element.link;
-  cardElement.querySelector('.cards__like').addEventListener('click', likeCard);
-  cardElement.querySelector('.cards__trash').addEventListener('click',removeCard)
-  cardsList.append(cardElement);
-  imgElem.addEventListener('click', function() {
-    togglePopup(imgOpenPopup);
-    openedImage.src = imgElem.src;
-    descriptionPopup.innerText = cardTitle.textContent;
-  });
-});
-
 //функция лайка 
 function likeCard(evt){
   evt.target.classList.toggle('cards__like_active');
-
 }
 
 //функция удаления карточки
@@ -131,7 +113,22 @@ profileAdd.addEventListener('click', function () {
 // Находим форму добавления карточки в DOM
 let formAddPlace = document.querySelector(".popup__form-addPlace");
 
-// Функция добавления карточки
+initialCards.forEach(function (element) {
+  const cardElement = cardsTemplate.cloneNode(true);
+  const imgElem = cardElement.querySelector('.cards__img');
+  const cardTitle = cardElement.querySelector('.cards__title');
+  cardTitle.textContent = element.name;
+  imgElem.src = element.link;
+  cardElement.querySelector('.cards__like').addEventListener('click', likeCard);
+  cardElement.querySelector('.cards__trash').addEventListener('click',removeCard)
+  cardsList.append(cardElement);
+  imgElem.addEventListener('click', function() {
+    togglePopup(imgOpenPopup);
+    openedImage.src = imgElem.src;
+    descriptionPopup.innerText = cardTitle.textContent;
+  });
+});
+
 function submitPlace (evt){
   evt.preventDefault();
   const cardElement =  cardsTemplate.querySelector('.cards__item').cloneNode(true);
@@ -156,5 +153,8 @@ function submitPlace (evt){
 
 }
 
+function createCard(name, link) {
+  
+}
 
 formAddPlace.addEventListener('submit', submitPlace);
