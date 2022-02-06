@@ -29,13 +29,25 @@ function removeCard(evt) {
   evt.target.closest('.cards__item').remove();
 }
 
+function closePopupOnEsc(evt){
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    if (openedPopup === null) {
+      return;
+    }
+    closePopup(openedPopup);
+  }
+}
+
 //открываем popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupOnEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupOnEsc);
 }
 
 // функция создания элемента карточки
@@ -74,17 +86,6 @@ popups.forEach(popup => {
   });
 });
 
-// закрытие на esc
-document.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    if (openedPopup === null) {
-      return;
-    }
-    closePopup(openedPopup);
-  }
-});
-
 // обработчик события на кнопку открытия редактировать профиль
 profileEdit.addEventListener('click', popupOpen);
 
@@ -93,7 +94,6 @@ function popupOpen() {
   nameInput.value = nameProfile.textContent;
   jobInput.value = descriptionProfile.textContent;
   openPopup(popupEdit);
-
 }
 
 // Функция сохранения значений инпутов в шапку профиля
@@ -123,19 +123,10 @@ function submitPlace(evt) {
 formAddPlace.addEventListener('submit', submitPlace);
 
 enableValidation({
-  formSelector: 'formEditProfile',
+  formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save',
   inactiveButtonClass: 'popup__save_type_error',
   inputErrorClass:'popup__input_type_error',
   errorClass:'popup__error'
-});
-
-enableValidation({
-  formSelector: 'formAddPlace',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__save_type_error',
-  inputErrorClass:'popup__input_type_error',
-  errorClass: 'popup__error'
 });
