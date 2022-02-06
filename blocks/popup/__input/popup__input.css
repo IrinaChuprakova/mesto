@@ -9,3 +9,9 @@
   line-height: 17px;
   padding: 0 0 13px;
 }
+
+
+.popup__input:invalid{
+  border-bottom: 1px solid red;
+
+}

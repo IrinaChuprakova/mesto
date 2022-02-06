@@ -28,7 +28,7 @@
 
     <div class="cards">
       <ul class="cards__list list">
-       
+
       </ul>
     </div>
 
@@ -39,13 +39,19 @@
     <div class="popup popup_type_edit">
       <div class="popup__container ">
         <button class="button button_type_close" type="button"></button>
-        <form class="popup__form popup__form-edit" name="profile-edit">
+        <form class="popup__form" name="formEditProfile">
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Редактировать профиль</legend>
-            <input class="popup__input popup__input_type_name" type="text" name="firstname">
-            <input class="popup__input popup__input_type_job" type="text" name="job">
+            <label class="popup__label"> 
+              <input class="popup__input" type="text" name="firstname" minlength="2" maxlength="40" required>
+              <span class="popup__input_type_error"></span>
+            </label>
+            <label class="popup__label"> 
+              <input class="popup__input" type="text" name="job" minlength="2" maxlength="200" required>
+              <span class="popup__input_type_error"> </span>
+            </label>
           </fieldset>
-          <button class="button popup__save" type="submit">Сохранить</button>
+          <button disabled class="button popup__save" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
@@ -53,13 +59,19 @@
     <div class="popup popup_type_add-place">
       <div class="popup__container ">
         <button class="button button_type_close" type="button"></button>
-        <form class="popup__form popup__form-addPlace" name="place-add">
+        <form class="popup__form" name="formAddPlace">
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Новое место</legend>
-            <input class="popup__input popup__input_type_place" type="text" name="firstname" placeholder="Название">
-            <input class="popup__input popup__input_type_link" type="text" name="job" placeholder="Ссылка на картинку">
+            <label class="popup__label"> 
+              <input class="popup__input" type="text" name="place" placeholder="Название" minlength="2" maxlength="30" required>
+              <span class="popup__input_type_error"> </span>
+            </label>
+            <label class="popup__label"> 
+              <input class="popup__input" type="url" name="link" placeholder="Ссылка на картинку" required>
+              <span class="popup__input_type_error"> </span>
+            </label>
           </fieldset>
-          <button class="button popup__save" type="submit">Сохранить</button>
+          <button disabled class="button popup__save popup__save_type_error" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
@@ -86,6 +98,7 @@
     </li>
   </template>
   <script src="scripts/cards.js"> </script>
+  <script src="scripts/validate.js"></script>
   <script src="scripts/script.js"> </script>
 
 </body>
