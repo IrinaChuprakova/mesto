@@ -127,7 +127,8 @@ enableValidation({
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save',
   inactiveButtonClass: 'popup__save_type_error',
-  errorClass: '.popup__input_type_error'
+  inputErrorClass:'popup__input_type_error',
+  errorClass:'popup__error'
 });
 
 enableValidation({
@@ -135,5 +136,6 @@ enableValidation({
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save',
   inactiveButtonClass: 'popup__save_type_error',
-  errorClass: '.popup__input_type_error'
+  inputErrorClass:'popup__input_type_error',
+  errorClass: 'popup__error'
 });
