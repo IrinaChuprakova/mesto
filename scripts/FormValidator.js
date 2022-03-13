@@ -38,6 +38,7 @@ export class FormValidator {
   };
 
   resetValidation(){
-
+    this._form.reset();
+    this._setSubmitButtonState(false, this._button, this._validationSettings.inactiveButtonClass);
   }
 }

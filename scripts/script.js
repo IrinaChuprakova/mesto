@@ -103,6 +103,7 @@ initialCards.forEach(function (element) {
   cardsList.append(cardElement);
 });
 
+const validators = {};
 
 // обработчик добавления карточки
 function submitPlace(evt) {
@@ -110,7 +111,7 @@ function submitPlace(evt) {
   const cardElement = createCard(place.value, linkPlace.value);
   cardsList.prepend(cardElement);
   closePopup(popupAddPlace);
-  formAddPlace.reset();
+  validators[evt.target.getAttribute('name')].resetValidation();
 }
 
 const validationSettings = {
@@ -127,4 +128,5 @@ const forms = document.querySelectorAll(validationSettings.formSelector);
 forms.forEach(function (form) {
   const validator = new FormValidator(validationSettings, form);
   validator.enableValidation();
+  validators[form.getAttribute('name')] = validator;
 });
