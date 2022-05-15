@@ -6,7 +6,7 @@ export class FormValidator {
     this._inputs = this._form.querySelectorAll(this._validationSettings.inputSelector); 
   }
 
-  _setSubmitButtonState(isFormValid, buttonSave, inactiveButtonClass) {
+  _setSubmitButtonState = (isFormValid, buttonSave, inactiveButtonClass) => {
     if (isFormValid) {
       buttonSave.removeAttribute('disabled');
       buttonSave.classList.remove(inactiveButtonClass);
@@ -16,7 +16,7 @@ export class FormValidator {
     }
   };
 
-  _setEventListeners() {
+  _setEventListeners = () => {
     this._inputs.forEach(input => {
       input.addEventListener('input', () => {
         const spanError = input.parentElement.querySelector(`.${this._validationSettings.errorClass}`);
@@ -33,12 +33,25 @@ export class FormValidator {
     });
   }
 
-  enableValidation() {
+  enableValidation = () => {
     this._setEventListeners();
   };
 
-  resetValidation(){
+  enableButton = () => {
+    this._setSubmitButtonState(true, this._button, this._validationSettings.inactiveButtonClass);
+  }
+
+  clearInputsMessage = () => {
+    this._form.querySelectorAll('input').forEach(input => {
+      input.classList.remove(this._validationSettings.inputErrorClass);
+      const spanError = input.parentElement.querySelector(`.${this._validationSettings.errorClass}`);
+      spanError.textContent = '';
+    });
+  }
+
+  resetValidation = () => {
     this._form.reset();
+    this.clearInputsMessage();
     this._setSubmitButtonState(false, this._button, this._validationSettings.inactiveButtonClass);
   }
 }
