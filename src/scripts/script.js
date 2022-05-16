@@ -5,6 +5,7 @@ import { Section } from './Section.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js';
+import '../pages/index.css'; 
 
 const profileEdit = document.querySelector('.profile__edit');
 const nameProfile = document.querySelector('.profile__title');
