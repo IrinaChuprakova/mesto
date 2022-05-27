@@ -5,8 +5,12 @@ import { Section } from '../scripts/components/Section.js';
 import { PopupWithImage } from '../scripts/components/PopupWithImage.js';
 import { PopupWithForm } from '../scripts/components/PopupWithForm.js';
 import { UserInfo } from '../scripts/components/UserInfo.js';
+import { Api } from '../scripts/components/Api.js';
 import {initialCards,profileEdit,nameProfile,descriptionProfile,profileAdd,cardsTemplate,nameInput,jobInput,validationSettings} from '../scripts/utils/constants.js'
 
+const api = new Api({baseUrl:'https://mesto.nomoreparties.co/v1/cohort-41',
+                     headers: {authorization:'051caa04-d7b9-48a1-8ee1-a0f28ba759f9',
+                                             'Content-Type': 'application/json'}});
 
 const imgOpenPopup = new PopupWithImage('.popup_type_open-img');
 
