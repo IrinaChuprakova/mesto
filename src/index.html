@@ -17,7 +17,7 @@
 
   <div class="main">
     <div class="profile">
-      <button class="button profile__edit-picture" type="button" title="Изменить аватар">
+      <button class="profile__edit-picture" type="button" title="Изменить аватар">
         <img class="profile__picture"  src="<%=require('./image/profile_picture.jpg')%>" alt="Фото профиля">
       </button>
       <div class="profile__info">
@@ -91,6 +91,7 @@
     <div class="popup popup_type_edit-avatar">
       <div class="popup__container ">
         <button class="button button_type_close" type="button"></button>
+        <form class="popup__form" name="formEditAvatar">
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Обновить аватар</legend>
             <label class="popup__label"> 
@@ -125,19 +126,11 @@
         <h2 class="cards__title"></h2>
         <div class="cards__box-like">
           <button class="button cards__like" type="button"> </button>
-          <span class="cards__like-count"> 1 </span>
+          <span class="cards__like-count"> 0 </span>
         </div>
       </div>
     </li>
   </template>
-  <!-- <script type="module" src="scripts/cards.js"> </script>
-  <script type="module" src="scripts/Card.js"></script>
-  <script type="module" src="scripts/FormValidator.js"></script>
-  <script type="module" src="scripts/script.js"> </script>
-  <script type="module" src="scripts/Section.js"></script>
-  <script type="module" src="scripts/Popup.js"></script>
-  <script type="module" src="scripts/PopupWithImage.js"></script> -->
-
 </body>
 
 </html>

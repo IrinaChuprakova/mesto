@@ -2,14 +2,15 @@
 .profile__edit-picture {
     width: 120px;
     height: 120px;
-    border-radius: 50%;
     margin-right: 30px;
     border: none;
     padding: 0;
     background: transparent;
+    transition: background-color .3s ease-in;
   }
   .profile__edit-picture:hover{
-      background: url('../../../image/Edit-avatar.svg') center  26px no-repeat;
+      background: rgba(0, 0, 0, .8) url('../../../image/Edit-avatar.svg') center / 26px no-repeat;
+      cursor: pointer;      
   }
   @media screen and (max-width: 650px) {
     .profile__edit-picture {
