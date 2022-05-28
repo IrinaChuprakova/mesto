@@ -15,9 +15,14 @@ export class PopupWithForm extends Popup{
       return result;
     }
 
+    setButtonText(){
+      this._form.querySelector('.popup__save').textContent = 'Сохранить'  
+    }
+
     setEventListeners() {
       super.setEventListeners();
         this._popup.addEventListener("submit", evt => {
+          this._form.querySelector('.popup__save').textContent = 'Сохранить...'
           evt.preventDefault();
           const values = this._getInputValues();
           this._submit(values);

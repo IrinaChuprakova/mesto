@@ -17,8 +17,5 @@ const validationSettings = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error'
 }
-
-    const cardTrash = document.querySelectorAll('.cards__trash');
-    // const popupConfirm = document.querySelector('.popup_type_confirm');
     
 export{profileEdit,profileAdd,cardsTemplate,nameInput,jobInput,validationSettings,pictureEdit,profilePicture}

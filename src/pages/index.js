@@ -17,27 +17,38 @@ const imgOpenPopup = new PopupWithImage('.popup_type_open-img');
 const popupConfirm = new PopupWithSubmit('.popup_type_confirm');
 popupConfirm.setEventListeners();
 
-function createCard({name, link, isOwner, id}) {
-  const data = {name: name, link: link, isOwner: isOwner};
+function createCard({name, link, likes, ownerId, userId, cardId}) {
+  const data = {
+    name: name,
+    link: link,
+    likes: likes,
+    userId: userId,
+    ownerId: ownerId,
+    cardId: cardId
+  };
+  
   const card = new Card(data, cardsTemplate, (name, link) => {
     imgOpenPopup.open(name, link);
   }, () => {
     popupConfirm.setCallback(() => {
-      api.removeCard(id)
-        .then(() => card.delete())
+      api.removeCard(cardId)
+        .then(() => {
+          card.delete();
+          popupConfirm.close();
+        })
         .catch(error => console.log(error));
     });
     popupConfirm.open();
   }, (isLiked) => {
-    if (isLiked) {
-      api.addLike(id)
+    if (!isLiked) {
+      api.addLike(cardId)
       .then(() => card.likeCard())
       .catch(error => console.log(error));
       return
     }
     
-    api.removeLike(id)
-      .then(() => card.likeCard())
+    api.removeLike(cardId)
+      .then(() => card.unLikeCard())
       .catch(error => console.log(error));
   });
   return card.create();
@@ -56,8 +67,10 @@ api.getInitialCards()
     const element = createCard({
       name: card.name,
       link: card.link,
-      isOwner: userInfo.getUserId() === card.owner._id,
-      id: card._id
+      likes: card.likes.map(like => like._id),
+      ownerId: card.owner._id,
+      userId: userInfo.getUserId(),
+      cardId: card._id
     });
     section.addItem(element);
   }))
@@ -83,16 +96,25 @@ const popupEdit = new PopupWithForm('.popup_type_edit', values => {
     .then(userData => {
       userInfo.setUserInfo({name:userData.name, job:userData.about});
       userInfo.setUserAvatar(userData.avatar);
+      popupEdit.setButtonText();
     })
     .catch(error => console.log(error));
 });
 
 const popupAddPlace = new PopupWithForm('.popup_type_add-place', values => {
   validators.formAddPlace.resetValidation();
-    api.sendCard(values['place'],values['link'])
-     .then(cardData =>{
-      const cardElement = createCard({name: cardData.name, link: cardData.link});
-      section.addItem(cardElement);
+    api.sendCard(values['place'], values['link'])
+     .then(cardData => {
+        const cardElement = createCard({
+          name: cardData.name,
+          link: cardData.link,
+          likes: cardData.likes.map(like => like._id),
+          ownerId: cardData.owner._id,
+          userId: userInfo.getUserId(),
+          cardId: cardData._id
+        });
+        popupAddPlace.setButtonText();
+        section.addItem(cardElement);
      })
      .catch(error => console.log(error));
 });
@@ -121,6 +143,7 @@ const popupEditAvatar = new PopupWithForm('.popup_type_edit-avatar', values => {
     api.updateAvatar(values['link'])
     .then(userData => {
       profilePicture.src = userData.avatar;
+      popupEditAvatar.setButtonText();
     })
     .catch(error => console.log(error));
 });
