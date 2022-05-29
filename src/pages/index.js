@@ -62,27 +62,17 @@ const userInfo = new UserInfo({
   avatar:'.profile__picture'
 });
 
-api.getInitialCards()
-  .then(cards => cards.forEach(card => {
-    const element = createCard({
-      name: card.name,
-      link: card.link,
-      likes: card.likes.map(like => like._id),
-      ownerId: card.owner._id,
-      userId: userInfo.getUserId(),
-      cardId: card._id
-    });
-    section.addItem(element);
-  }))
-  .catch(error => console.log(error));
+// api.getInitialCards()
+//   .then(cards => )
+//   .catch(error => console.log(error));
 
-api.getUserInfo()
-  .then(userData => { 
-    userInfo.setUserInfo({name: userData.name, job: userData.about});
-    userInfo.setUserAvatar(userData.avatar);
-    userInfo.setUserId(userData._id);
-  })
-  .catch(error => console.log(error));
+// api.getUserInfo()
+  // .then(userData => { 
+  //   userInfo.setUserInfo({name: userData.name, job: userData.about});
+  //   userInfo.setUserAvatar(userData.avatar);
+  //   userInfo.setUserId(userData._id);
+  // })
+  // .catch(error => console.log(error));
 const validators = {};
 
 document.querySelectorAll(validationSettings.formSelector).forEach(form => {
@@ -96,9 +86,10 @@ const popupEdit = new PopupWithForm('.popup_type_edit', values => {
     .then(userData => {
       userInfo.setUserInfo({name:userData.name, job:userData.about});
       userInfo.setUserAvatar(userData.avatar);
-      popupEdit.setButtonText();
+      popupEdit.close();
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => popupEdit.setButtonText());
 });
 
 const popupAddPlace = new PopupWithForm('.popup_type_add-place', values => {
@@ -113,10 +104,11 @@ const popupAddPlace = new PopupWithForm('.popup_type_add-place', values => {
           userId: userInfo.getUserId(),
           cardId: cardData._id
         });
-        popupAddPlace.setButtonText();
+        popupAddPlace.close();
         section.addItem(cardElement);
      })
-     .catch(error => console.log(error));
+     .catch(error => console.log(error))
+     .finally(() => popupAddPlace.setButtonText());
 });
 
 const popups = [popupEdit, popupAddPlace, imgOpenPopup];
@@ -142,10 +134,11 @@ profileAdd.addEventListener('click', () => {
 const popupEditAvatar = new PopupWithForm('.popup_type_edit-avatar', values => {
     api.updateAvatar(values['link'])
     .then(userData => {
-      profilePicture.src = userData.avatar;
-      popupEditAvatar.setButtonText();
+      userInfo.setUserAvatar(userData.avatar);
+      popupEditAvatar.close();
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => popupEditAvatar.setButtonText());
 });
 
 popupEditAvatar.setEventListeners();
@@ -154,3 +147,22 @@ pictureEdit.addEventListener('click', () => {
   validators.formEditAvatar.resetValidation();
   popupEditAvatar.open();
 });
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo({name: userData.name, job: userData.about});
+    userInfo.setUserAvatar(userData.avatar);
+    userInfo.setUserId(userData._id);
+    cards.reverse().forEach(card => {
+      const element = createCard({
+        name: card.name,
+        link: card.link,
+        likes: card.likes.map(like => like._id),
+        ownerId: card.owner._id,
+        userId: userInfo.getUserId(),
+        cardId: card._id
+      });
+      section.addItem(element);
+    });
+  })
+  .catch(error => console.log(error));
