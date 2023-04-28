@@ -10,7 +10,7 @@
 ### Используемые технологии:
 * HTML
 * CSS
-* Flexbox 
+* Flexbox
 * Grid
 * JavaScript
 
