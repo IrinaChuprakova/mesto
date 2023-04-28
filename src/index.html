@@ -5,20 +5,17 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Mesto</title>
 </head>
 
 <body class="page">
-
   <header class="header">
     <div class="header__logo"></div>
   </header>
-
   <div class="main">
     <div class="profile">
       <button class="profile__edit-picture" type="button" title="Изменить аватар">
-        <img class="profile__picture"  src="<%=require('./image/profile_picture.jpg')%>" alt="Фото профиля">
+        <img class="profile__picture" src="<%=require('./image/profile_picture.jpg')%>" alt="Фото профиля">
       </button>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -27,28 +24,24 @@
       </div>
       <button class="button profile__add" type="button"></button>
     </div>
-
     <div class="cards">
       <ul class="cards__list list">
-
       </ul>
     </div>
-
     <footer>
       <p class="footer"> &copy; 2020 Mesto Russia </p>
     </footer>
-
     <div class="popup popup_type_edit">
       <div class="popup__container ">
         <button class="button button_type_close" type="button"></button>
         <form class="popup__form" name="formEditProfile">
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Редактировать профиль</legend>
-            <label class="popup__label"> 
+            <label class="popup__label">
               <input class="popup__input" type="text" name="firstname" minlength="2" maxlength="40" required>
               <span class="popup__error"></span>
             </label>
-            <label class="popup__label"> 
+            <label class="popup__label">
               <input class="popup__input" type="text" name="job" minlength="2" maxlength="200" required>
               <span class="popup__error"> </span>
             </label>
@@ -57,18 +50,18 @@
         </form>
       </div>
     </div>
-
     <div class="popup popup_type_add-place">
       <div class="popup__container ">
         <button class="button button_type_close" type="button"></button>
         <form class="popup__form" name="formAddPlace">
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Новое место</legend>
-            <label class="popup__label"> 
-              <input class="popup__input" type="text" name="place" placeholder="Название" minlength="2" maxlength="30" required>
+            <label class="popup__label">
+              <input class="popup__input" type="text" name="place" placeholder="Название" minlength="2" maxlength="30"
+                required>
               <span class="popup__error"> </span>
             </label>
-            <label class="popup__label"> 
+            <label class="popup__label">
               <input class="popup__input" type="url" name="link" placeholder="Ссылка на картинку" required>
               <span class="popup__error"> </span>
             </label>
@@ -77,7 +70,6 @@
         </form>
       </div>
     </div>
-
     <div class="popup popup_type_open-img">
       <div class="popup__figure-container ">
         <button class="button button_type_close" type="button"></button>
@@ -87,14 +79,13 @@
         </figure>
       </div>
     </div>
-
     <div class="popup popup_type_edit-avatar">
       <div class="popup__container ">
         <button class="button button_type_close" type="button"></button>
         <form class="popup__form" name="formEditAvatar">
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Обновить аватар</legend>
-            <label class="popup__label"> 
+            <label class="popup__label">
               <input class="popup__input" type="url" name="link" placeholder="Ссылка на картинку" required>
               <span class="popup__error"> </span>
             </label>
@@ -103,7 +94,6 @@
         </form>
       </div>
     </div>
-
     <div class="popup popup_type_confirm">
       <div class="popup__container ">
         <button class="button button_type_close" type="button"></button>
@@ -115,9 +105,7 @@
         </form>
       </div>
     </div>
-
   </div>
-
   <template id="cards__template">
     <li class="cards__item">
       <button class="button cards__trash" type="button"> </button>
